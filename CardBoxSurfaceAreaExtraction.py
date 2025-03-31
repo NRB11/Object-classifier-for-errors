@@ -46,7 +46,7 @@ def extract_cardboard_area(image_path):
     return image, total_area
 
 def train_model():
-    image, total_area = extract_cardboard_area("Images/test.png")
+    image, total_area = extract_cardboard_area("Images/test1.jpg")
     if image is not None:
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         img = Image.fromarray(image)
