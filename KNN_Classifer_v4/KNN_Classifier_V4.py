@@ -10,7 +10,7 @@ from PIL import Image, ImageTk
 
 # Global variables
 training_folder_path = ""
-csv_filename = "training_data_v4.csv"
+csv_filename = "KNN_Classifer_v4/training_data_v4.csv"
 training_data = pd.DataFrame(columns=["Surface Area", "Label"])
 knn = None
 
