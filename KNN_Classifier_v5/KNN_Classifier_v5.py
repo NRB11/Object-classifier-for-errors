@@ -10,7 +10,7 @@ from PIL import Image, ImageTk
 
 # Global variables
 training_folder_path = ""
-csv_filename = "KNN_Classifier_v5/training_data_v5.csv"
+csv_filename = "training_data.csv"
 training_data = pd.DataFrame(columns=["Surface Area", "Label"])
 knn = None
 
@@ -116,7 +116,7 @@ def start_training():
         classify_button_no_error.config(command=lambda: classify_image(surface_area, "No Error", idx))
 
     button_frame = tk.Frame(training_window)
-    button_frame.pack(pady=10)
+    button_frame.pack(pady=10, side="bottom")
 
     classify_button_critical = tk.Button(button_frame, text="Critical Error", bg="red", fg="white", width=20, height=2)
     classify_button_critical.grid(row=0, column=0, padx=10)
@@ -189,13 +189,19 @@ root.geometry("1000x800")
 image_label = tk.Label(root)
 image_label.pack()
 
-text_label = tk.Label(root, text="Surface Area: -- px²", font=("Arial", 14))
-text_label.pack()
+header_label = tk.Label(root, text="Error Classifier", font=("Arial", 16, "bold"))
+header_label.pack(pady=10)
 
-train_button = tk.Button(root, text="Training", command=start_training, width=30, height=2)
-train_button.pack(pady=20)
+button_frame_main = tk.Frame(root)
+button_frame_main.place(relx=0.5, rely=0.6, anchor="n")
 
-classify_button = tk.Button(root, text="Classify Image", command=classify_new_image, width=30, height=2)
-classify_button.pack(pady=20)
+classify_button = tk.Button(button_frame_main, text="Classify Image", command=classify_new_image, width=20, height=2, bg="light green")
+classify_button.grid(row=0, column=0, padx=10)
+
+shutdown_button = tk.Button(button_frame_main, text="Shutdown", command=root.destroy, width=20, height=2, bg="red", fg="white")
+shutdown_button.grid(row=0, column=1, padx=10)
+
+train_button = tk.Button(button_frame_main, text="Training", command=start_training, width=20, height=2, bg="light green")
+train_button.grid(row=0, column=2, padx=10)
 
 root.mainloop()
