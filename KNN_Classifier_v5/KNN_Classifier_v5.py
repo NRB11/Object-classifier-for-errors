@@ -83,7 +83,7 @@ def start_training():
         if idx + 1 < len(image_files):
             display_image(idx + 1)
         else:
-            messagebox.showinfo("Done", "All images classified! Training model now.")
+            messagebox.showinfo("Done", "All images labeled! Training model now.")
             training_window.destroy()
             train_knn()
 
@@ -169,11 +169,11 @@ def classify_new_image():
         image_index += 1
         display_image(image_index)
 
-    cancel_button = tk.Button(classification_window, text="Cancel", command=cancel_classification, bg="red", fg="white", width=20, height=2)
-    cancel_button.pack(pady=10)
-
     next_button = tk.Button(classification_window, text="Next", command=next_image, bg="light blue", width=20, height=2)
     next_button.pack(pady=10)
+
+    cancel_button = tk.Button(classification_window, text="Cancel", command=cancel_classification, bg="red", fg="white", width=20, height=2)
+    cancel_button.pack(pady=10)
 
     display_image(image_index)
 
