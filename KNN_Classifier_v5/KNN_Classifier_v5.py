@@ -137,7 +137,10 @@ def classify_new_image():
     classification_window.title("Image Classification")
     classification_window.geometry("1000x800")
 
-    image_files = [f for f in os.listdir(classify_folder_path) if f.endswith((".jpg", ".png"))]
+    image_files = sorted(
+    [f for f in os.listdir(classify_folder_path) if f.lower().endswith((".jpg", ".png"))],
+    reverse=True
+    )
     image_index = 0
 
     image_label = tk.Label(classification_window)
